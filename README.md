@@ -21,7 +21,7 @@ Overview of the Node Constructor: A context encoder is applied to get the contex
 
 **Dynamic Reasoner**:
 <p align="center">
-<img src="./fig/reasoner.png" width="60%" height="60%">
+<img src="./fig/reasoner.png" width="50%" height="50%">
 </p>
 Overview of the Dynamic Reasoner. Each block consists of two sub-modules: structure induction and multi-hop reasoning. The first module takes the nodes constructed by the Node Constructor as inputs. Representations of nodes are fed into two feed forward networks before the bilinear transformation. The latent document-level structure is computed by the Matrix-Tree Theorem. The second module takes the structure as input and updates representations of nodes by using the densely connected graph convolutional networks. We stack $N$ blocks which correspond to $N$ times of refinement. Each iteration outputs the latent structure for inference.
 
