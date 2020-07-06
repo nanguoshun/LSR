@@ -20,10 +20,9 @@ networkx==2.4
 Overview of the Node Constructor: A context encoder is applied to get the contextualized representations of sentences. The representations of mentions and words in the meta dependency path are extracted as mention nodes and MDP nodes. An average pooling is used to construct the entity node from the mention nodes. For example, the entity node *Lutsenko* is constructed by averaging representations of its mentions *Lutsenko* and *He*.
 
 **Dynamic Reasoner**:
-![Node Constructor](fig/reasoner.png)
-#<p align="center">
-#<img src="./fig/node.png" width="50%" height="50%">
-#</p>
+<p align="center">
+<img src="./fig/reasoner.png" width="60%" height="60%">
+</p>
 Overview of the Dynamic Reasoner. Each block consists of two sub-modules: structure induction and multi-hop reasoning. The first module takes the nodes constructed by the Node Constructor as inputs. Representations of nodes are fed into two feed forward networks before the bilinear transformation. The latent document-level structure is computed by the Matrix-Tree Theorem. The second module takes the structure as input and updates representations of nodes by using the densely connected graph convolutional networks. We stack $N$ blocks which correspond to $N$ times of refinement. Each iteration outputs the latent structure for inference.
 
 # Dataset
