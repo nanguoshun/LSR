@@ -59,7 +59,7 @@ class StructInduction(nn.Module):
         mask = mask.unsqueeze(0).expand(f_ij.size(0), mask.size(0), mask.size(1)).cuda()
         A_ij = torch.exp(f_ij) * mask
 
-        """STEP2: Injecting structrual bias"""
+        """STEP: Incude Latent Structure"""
         tmp = torch.sum(A_ij, dim=1)  # nan: dimension
         res = torch.zeros(batch_size, token_size, token_size).cuda()
         # tmp = torch.stack([torch.diag(t) for t in tmp])
