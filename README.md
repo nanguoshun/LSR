@@ -56,7 +56,7 @@ python3 test.py
 
 ## Related Repo
 
-Codes are adapted from the repo of the ACL2019 paper DocRED [DocRED: A Large-Scale Document-Level Relation Extraction Dataset](https://github.com/thunlp/DocRED) and Pytorch implementation of [Learning Structured Text Representations] (https://github.com/vidhishanair/structured-text-representations)
+Codes are adapted from the repo of the ACL2019 paper DocRED [DocRED: A Large-Scale Document-Level Relation Extraction Dataset](https://github.com/thunlp/DocRED) and Pytorch implementation of [Learning Structured Text Representations](https://github.com/vidhishanair/structured-text-representations)
 
 ## Citation
 
