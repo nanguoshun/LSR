@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 
 # configurations for data
 parser.add_argument('--data_path', type=str, default='./prepro_data')
-parser.add_argument('--model_name', type = str, default = 'LSR', help = 'name of the model')
+parser.add_argument('--model_name', type = str, default = 'LSR', help = '[LSR, LSR_bert], name of the model')
 parser.add_argument('--train_prefix', type = str, default = 'dev_train')
 parser.add_argument('--test_prefix', type = str, default = 'dev_dev')
 
