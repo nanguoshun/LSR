@@ -10,7 +10,7 @@ import datetime
 DOCRED = 'docred'
 
 data_set = DOCRED
-BATCH_SIZE = 20
+BATCH_SIZE = 2
 HIDDEN_DIM = 120
 LR = 1e-3
 MAX_EPOCH = 200
@@ -98,11 +98,17 @@ def print_config(config):
 
 print_config(args)
 
+if args.model_name == 'LSR_bert':
+    from code_bert import LSR
 model = {
 	'LSR': models.LSR,
+    'LSR_bert': LSR
 }
 
-con = config.Config(args)
+if args.model_name == 'LSR_bert':
+    con = config.ConfigBert(args)
+else:
+    con = config.Config(args)
 con.load_train_data()
 con.load_test_data()
 
