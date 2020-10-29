@@ -39,6 +39,13 @@ After you download the dataset, please put the files train_annotated.json, dev.j
 # python3 gen_data.py 
 ```
 
+For an BERT encoder:
+```
+# cd code
+# python3 gen_data_bert.py 
+```
+
+
 # Training
 In order to train the model, run:
 
@@ -46,6 +53,7 @@ In order to train the model, run:
 # cd code
 # python3 train.py
 ```
+For an BERT encoder, Please set the '--model_name' as 'LSR_bert'
 
 # Test
 After the training process, we can test the model by:
