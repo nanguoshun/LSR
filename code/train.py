@@ -10,7 +10,7 @@ import datetime
 DOCRED = 'docred'
 
 data_set = DOCRED
-BATCH_SIZE = 2
+BATCH_SIZE = 20
 HIDDEN_DIM = 120
 LR = 1e-3
 MAX_EPOCH = 200
