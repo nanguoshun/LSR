@@ -654,6 +654,7 @@ class ConfigBert(object):
                         {"params": other_params, "lr":self.lr},
                         {"params": ori_model.bert.parameters(), "lr": 1e-5},
                         ], lr=self.lr)
+        print(optimizer)
 
         scheduler = optim.lr_scheduler.ExponentialLR(optimizer, self.lr_decay)
 

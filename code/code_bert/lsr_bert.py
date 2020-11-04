@@ -16,6 +16,7 @@ class LSR(nn.Module):
         self.bert = BertModel.from_pretrained('bert-base-uncased')
         print("loaded bert-base-uncased")
 
+        hidden_size = config.rnn_hidden
         bert_hidden_size = 768
         self.linear_re = nn.Linear(bert_hidden_size, hidden_size)
 
@@ -34,7 +35,7 @@ class LSR(nn.Module):
 
         self.dropout_rate = nn.Dropout(config.dropout_rate)
 
-        self.rnn_sent = Encoder(input_size, hidden_size, config.dropout_emb, config.dropout_rate)
+        #self.rnn_sent = Encoder(input_size, hidden_size, config.dropout_emb, config.dropout_rate)
         self.hidden_size = hidden_size
 
         self.use_struct_att = config.use_struct_att

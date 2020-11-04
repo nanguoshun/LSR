@@ -10,7 +10,7 @@ import datetime
 DOCRED = 'docred'
 
 data_set = DOCRED
-BATCH_SIZE = 2
+BATCH_SIZE = 10
 HIDDEN_DIM = 120
 LR = 1e-3
 MAX_EPOCH = 200
@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 
 # configurations for data
 parser.add_argument('--data_path', type=str, default='./prepro_data')
-parser.add_argument('--model_name', type = str, default = 'LSR', help = 'name of the model')
+parser.add_argument('--model_name', type = str, default = 'LSR_bert', help = 'name of the model')
 parser.add_argument('--train_prefix', type = str, default = 'dev_train')
 parser.add_argument('--test_prefix', type = str, default = 'dev_dev')
 
