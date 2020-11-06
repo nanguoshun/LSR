@@ -645,9 +645,16 @@ class ConfigBert(object):
             ori_model.load_state_dict(torch.load(self.pretrain_model))
         ori_model.cuda()
 
-        parameters = [p for p in ori_model.parameters() if p.requires_grad]
+        # parameters = [p for p in ori_model.parameters() if p.requires_grad]
+        other_params = [p for name, p in ori_model.named_parameters() if p.requires_grad and not name.startswith("bert")]
 
-        optimizer = torch_utils.get_optimizer(self.optim, parameters, self.lr)
+
+        # optimizer = torch_utils.get_optimizer(self.optim, parameters, self.lr)
+        optimizer = optim.Adam([
+                        {"params": other_params, "lr":self.lr},
+                        {"params": ori_model.bert.parameters(), "lr": 1e-5},
+                        ], lr=self.lr)
+        print(optimizer)
 
         scheduler = optim.lr_scheduler.ExponentialLR(optimizer, self.lr_decay)
 

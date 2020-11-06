@@ -5,7 +5,6 @@ from models.encoder import Encoder
 from models.attention import SelfAttention
 from models.reasoner import DynamicReasoner
 from models.reasoner import StructInduction
-# from code_bert.mybert import MyBert
 from pytorch_transformers import BertModel
 
 class LSR(nn.Module):
@@ -13,33 +12,11 @@ class LSR(nn.Module):
         super(LSR, self).__init__()
         self.config = config
 
-        self.finetune_emb = config.finetune_emb
 
-        self.word_emb = nn.Embedding(config.data_word_vec.shape[0], config.data_word_vec.shape[1])
-        self.word_emb.weight.data.copy_(torch.from_numpy(config.data_word_vec))
-        if not self.finetune_emb:
-            self.word_emb.weight.requires_grad = False
-
-        self.ner_emb = nn.Embedding(13, config.entity_type_size, padding_idx=0)
-
-        self.coref_embed = nn.Embedding(config.max_length, config.coref_size, padding_idx=0)
-
-        hidden_size = config.rnn_hidden
-        input_size = config.data_word_vec.shape[1] + config.coref_size + config.entity_type_size #+ char_hidden
-
-        # if config.use_pretrained_bert:
-            # pretrain_model = MyBert(config = config)
-            # state_dict = torch.load(config.pretrained_bert_path)
-            # pretrain_model.load_state_dict(state_dict)
-            # self.bert = pretrain_model.bert
-
-            # del pretrain_model
-            # self.bert.cuda()
-            # print("loaded pretrained BERT")
-        # else:
         self.bert = BertModel.from_pretrained('bert-base-uncased')
         print("loaded bert-base-uncased")
 
+        hidden_size = config.rnn_hidden
         bert_hidden_size = 768
         self.linear_re = nn.Linear(bert_hidden_size, hidden_size)
 
@@ -58,7 +35,7 @@ class LSR(nn.Module):
 
         self.dropout_rate = nn.Dropout(config.dropout_rate)
 
-        self.rnn_sent = Encoder(input_size, hidden_size, config.dropout_emb, config.dropout_rate)
+        #self.rnn_sent = Encoder(input_size, hidden_size, config.dropout_emb, config.dropout_rate)
         self.hidden_size = hidden_size
 
         self.use_struct_att = config.use_struct_att
@@ -145,7 +122,6 @@ class LSR(nn.Module):
         """
 
         '''===========STEP1: Encode the document============='''
-        # TODO: add context_masks and context_starts arguments
         context_output = self.bert(context_idxs, attention_mask=context_masks)[0]
         context_output = [layer[starts.nonzero().squeeze(1)]
                    for layer, starts in zip(context_output, context_starts)]
