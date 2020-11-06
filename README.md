@@ -39,6 +39,13 @@ After you download the dataset, please put the files train_annotated.json, dev.j
 # python3 gen_data.py 
 ```
 
+For the BERT encoder:
+```
+# cd code
+# python3 gen_data_bert.py 
+```
+
+
 # Training
 In order to train the model, run:
 
@@ -46,6 +53,7 @@ In order to train the model, run:
 # cd code
 # python3 train.py
 ```
+For the BERT encoder, Please set the '--model_name' as 'LSR_bert'
 
 # Test
 After the training process, we can test the model by:
@@ -56,9 +64,10 @@ python3 test.py
 
 ## Related Repo
 
-Codes are adapted from the repo of the ACL2019 paper DocRED [DocRED: A Large-Scale Document-Level Relation Extraction Dataset](https://github.com/thunlp/DocRED).
+Codes are adapted from the repo of the ACL2019 paper DocRED [DocRED: A Large-Scale Document-Level Relation Extraction Dataset](https://github.com/thunlp/DocRED) and the Pytorch implementation of [Learning Structured Text Representations](https://github.com/vidhishanair/structured-text-representations). We would like to thanks [Yang Liu](https://github.com/nlpyang) and [Vidhisha Balachandran](https://github.com/vidhishanair) for their constructive suggestions.
 
 ## Citation
+If you find our work or the code useful, please consider cite our paper using:
 
 ```
 @inproceedings{nan2020lsr,
