@@ -12,11 +12,12 @@ DOCRED = 'docred'
 data_set = DOCRED
 
 BATCH_SIZE = 20
-HIDDEN_DIM = 120
+HIDDEN_DIM = 120# please use 216 for BERT
+#for BERT---
 LR = 1e-3
 MAX_EPOCH = 200
 
-SEED = 0 #random.randint(0, 10000)
+SEED = 0 #you can set random seed by random.randint(0, 10000)
 NAME = 'Struct'
 EMB_DIM = 100
 DECAY_RATE = 0.98
@@ -103,7 +104,7 @@ def print_config(config):
 print_config(args)
 
 if args.model_name == 'LSR_bert':
-    from code_bert import LSR
+    from code_bert import LSR # Noted that hidden_dim is configured as 216 for BERT-based in our paper.
 model = {
 	'LSR': models.LSR,
     'LSR_bert': LSR
